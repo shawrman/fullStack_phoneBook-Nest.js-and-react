@@ -1,0 +1,80 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """id of the user"""
+  userId: String!
+
+  """first name of the user"""
+  firstName: String!
+
+  """last name of the user"""
+  lastName: String!
+
+  """Nickname of the user"""
+  nickName: String!
+
+  """Nickname of the user"""
+  phoneNumbers: String!
+
+  """address of the user"""
+  address: String!
+
+  """url of photo of the user"""
+  photo: String!
+}
+
+type Query {
+  users: [User!]!
+  user(userId: String!): User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(userId: String!): User!
+}
+
+input CreateUserInput {
+  """first name of the user"""
+  firstName: String!
+
+  """last name of the user"""
+  lastName: String!
+
+  """Nickname of the user"""
+  nickName: String!
+
+  """honeNumbers of the user"""
+  phoneNumbers: String!
+
+  """address of the user"""
+  address: String!
+
+  """url of photo of the user"""
+  photo: String!
+}
+
+input UpdateUserInput {
+  """first name of the user"""
+  firstName: String!
+
+  """last name of the user"""
+  lastName: String!
+
+  """Nickname of the user"""
+  nickName: String!
+
+  """honeNumbers of the user"""
+  phoneNumbers: String!
+
+  """address of the user"""
+  address: String!
+
+  """url of photo of the user"""
+  photo: String!
+
+  """url of photo of the user"""
+  userId: String!
+}
