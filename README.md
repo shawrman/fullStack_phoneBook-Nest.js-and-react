@@ -2,4 +2,8 @@
 full stack phonebook. using: nest.js, graphQL,postgreSQL,docker,reactJS,URQL,typeORM.
 
 
-![image](https://user-images.githubusercontent.com/59196882/192828722-f5736256-505e-4f54-9aea-f40325da208e.png)
+![image](https://user-images.githubusercontent.com/59196882/192835771-ce351053-deaf-4023-9263-078ee3b1ee0c.png)
+
+
+![image](https://user-images.githubusercontent.com/59196882/192835956-4051bc38-e1f4-4c59-b2b6-ce54a773af54.png)
+
