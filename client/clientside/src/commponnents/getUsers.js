@@ -50,12 +50,12 @@ function GetUsers() {
     return (
 
         <div>
-            <div>
+            <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                 <input type="text" value={search} placeholder="term to search" onChange={e => setSearch(e.target.value)} />
-              
+
 
             </div>
-            <div style={{  justifyContent:'center', alignItems:'center'}}>
+            <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                 {contacts.users ? contacts.users.sort((a, b) =>
                     (a.nickName ? (a.nickName > (b.nickName ? b.nickName : b.firstName) ? -1 : 1) : (a.firstName > (b.nickName ? b.nickName : b.firstName) ? -1 : 1))).filter(contact => contact.firstName.includes(search) || contact.lastName.includes(search) || contact.nickName.includes(search)
                     )
@@ -68,12 +68,16 @@ function GetUsers() {
                         </div>
 
                     )) : <div>empty</div>}
-                <button onClick={() => back(contacts.users.filter(contact => contact.firstName.includes(search) || contact.lastName.includes(search) || contact.nickName.includes(search)).length)}>back</button>
-
-                <button onClick={() => next(contacts.users.filter(contact => contact.firstName.includes(search) || contact.lastName.includes(search) || contact.nickName.includes(search)).length)}>next</button>
 
 
             </div>
+            <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+                <button onClick={() => back(contacts.users.filter(contact => contact.firstName.includes(search) || contact.lastName.includes(search) || contact.nickName.includes(search)).length)}>back</button>
+                
+                <button onClick={() => next(contacts.users.filter(contact => contact.firstName.includes(search) || contact.lastName.includes(search) || contact.nickName.includes(search)).length)}>next</button>
+
+            </div>
+
         </div>
 
     )

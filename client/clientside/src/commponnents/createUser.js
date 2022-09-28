@@ -31,7 +31,7 @@ const POST_MUTATION = gql`
     }
   }`
 function lpad(value, padding) {
-    var zeroes = new Array(padding+1).join("0");
+    var zeroes = new Array(padding + 1).join("0");
     return (zeroes + value).slice(-padding);
 }
 
@@ -47,102 +47,119 @@ const CreateUser = props => {
     const [blur, setBlur] = React.useState("000")
     const [saturate, setSaturate] = React.useState("050")
 
-  
-    const submit = React.useCallback( async () => {
-        
+
+    const submit = React.useCallback(async () => {
+
 
         const temp = photo + grayscale + blur + saturate
-  
+
         executeMutation({ firstName, lastName, nickName, phoneNumbers, address, temp })
     },)
 
 
     return (
-        <div>
-            <h3>create contact</h3>
+        <div >
 
-            <div className="flex flex-column mt3">
-                <input
-                    className="mb2"
-                    value={firstName}
-                    onChange={e => setFirstName(e.target.value)}
-                    type="text"
-                    placeholder="first name"
-                />
-                <input
-                    className="mb2"
-                    value={lastName}
-                    onChange={e => setLastName(e.target.value)}
-                    type="text"
-                    placeholder="last name"
-                />
+            <h3 style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>create contact</h3>
+            <div>
+                <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+
+                    <input
+                        className="mb2"
+                        value={firstName}
+                        onChange={e => setFirstName(e.target.value)}
+                        type="text"
+                        placeholder="first name"
+                    />
+                    <input
+                        className="mb2"
+                        value={lastName}
+                        onChange={e => setLastName(e.target.value)}
+                        type="text"
+                        placeholder="last name"
+                    />
+
+                </div>
+
+                <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+                    <input
+                        className="mb2"
+                        value={nickName}
+                        onChange={e => setNickName(e.target.value)}
+                        type="text"
+                        placeholder="nick-name"
+                    />
+                    <input
+                        className="mb2"
+                        value={phoneNumbers}
+                        onChange={e => setPhoneNumbers(e.target.value)}
+                        type="text"
+                        placeholder="phone numbers(seperted by ',')"
+                    />
+                </div>
+                <div style={{ paddingLeft: '75px', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+
+                    <input
+                        className="mb2"
+                        value={address}
+                        onChange={e => setAddress(e.target.value)}
+                        type="text"
+                        placeholder="address"
+                    />
+                    <input
+                        className="mb2"
+                        onChange={async e => {
+                            const file = e.target.files[0];
+                            const base64 = await convertBase64(file);
+                            console.log(base64)
+                            setPhoto(base64)
+
+
+
+
+
+
+                        }}
+                        type="file"
+                        placeholder="The URL for the link"
+                    />
+                </div>
+                <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+
+                <div style={{ justifyContent: 'center', alignItems: 'center'}}>     
+                <div> "grayscale"</div>
+                <input type="range" min="0" max="100" step="1" value={grayscale} onChange={e => {
+                    setGrayscale(lpad(e.target.value, 3))
+
+
+                }} />
+                </div>  
+                <div>
+                <div style={{ paddingLeft: '5px'}}>  "blur"</div>
+                <input type="range" min="000" max="100" step="1" value={blur} onChange={e => {
+                    setBlur(lpad(e.target.value, 3))
+
+
+
+                }} />
+                </div>
+                <div>
+                <div>"saturate"</div>
+                <input type="range" min="0" max="100" step="1" value={saturate} onChange={e => {
+                    setSaturate(lpad(e.target.value, 3))
+
+
+                }} />
             </div>
-            <div className="flex flex-column mt3">
-                <input
-                    className="mb2"
-                    value={nickName}
-                    onChange={e => setNickName(e.target.value)}
-                    type="text"
-                    placeholder="nick-name"
-                />
-                <input
-                    className="mb2"
-                    value={phoneNumbers}
-                    onChange={e => setPhoneNumbers(e.target.value)}
-                    type="text"
-                    placeholder="phone numbers(seperted by ',')"
-                />
-            </div>
-            <div className="flex flex-column mt3">
-                <input
-                    className="mb2"
-                    value={address}
-                    onChange={e => setAddress(e.target.value)}
-                    type="text"
-                    placeholder="address"
-                />
-                <input
-                    className="mb2"
-                    onChange={async e => {
-                        const file = e.target.files[0];
-                        const base64 = await convertBase64(file);
-                        console.log(base64)
-                        setPhoto(base64)
-                        
 
-                  
-
-
-
-                    }}
-                    type="file"
-                    placeholder="The URL for the link"
-                />
-                <div>add filter "grayscale"</div>
-                <input type="range" min ="0" max ="100" step="1" value={grayscale} onChange={e => {
-                    setGrayscale(lpad(e.target.value,3))
-       
-                    
-                }}/>
-                <div>add filter "blur"</div>
-                <input type="range"min ="000" max ="100" step="1" value={blur} onChange={e => {
-                    setBlur(lpad(e.target.value,3))
-         
-           
-            
-                }}/>
-                <div>add filter "saturate"</div>
-                <input type="range" min ="0" max ="100" step="1" value={saturate} onChange={e => {
-                    setSaturate(lpad(e.target.value,3))
-                 
-
-                }}/>
+                <button onClick={submit}>
+                    Submit
+                </button>
+                </div>
 
             </div>
-            <button onClick={submit}>
-                Submit
-            </button>
-        </div>
+        </div >
+
     )
 }
 
